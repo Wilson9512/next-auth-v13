@@ -1,0 +1,19 @@
+version: '3.7'
+
+services:
+  database:
+    image: mysql:latest
+    command: ['mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci']
+    container_name: database-next-demo
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: next-demo
+    restart: unless-stopped  
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d
+
+
+volumes:
+  mysql_data:
