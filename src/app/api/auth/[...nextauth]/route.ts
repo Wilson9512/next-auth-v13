@@ -26,7 +26,7 @@ export const authOptions: AuthOptions = {
         if (!user) {
           return null;
         }
-        const userPassword = user.password;
+        const userPassword = user.passwordHash;
         const inValidPassword = bcrypt.compareSync(password, userPassword);
 
         if (!inValidPassword) {
